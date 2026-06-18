@@ -8,14 +8,14 @@ interface LeagueSectionProps {
 
 export function LeagueSection({ league, matches }: LeagueSectionProps) {
   return (
-    <div className="border border-[#74ACDF] rounded-lg overflow-hidden shadow-sm">
-      <div className="bg-[#74ACDF] px-4 py-2.5 border-b border-[#74ACDF]">
-        <h2 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
+    <div className="border border-green-700/50 rounded-lg overflow-hidden bg-green-950">
+      <div className="bg-green-900 px-4 py-2">
+        <h2 className="text-xs font-bold text-green-100 uppercase tracking-wider">
           {league}
         </h2>
       </div>
 
-      <div className="divide-y divide-[#74ACDF]/40 bg-white">
+      <div className="divide-y divide-green-800/60">
         {matches.map((match) => (
           <MatchCard key={match.id} match={match} />
         ))}

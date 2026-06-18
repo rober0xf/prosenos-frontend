@@ -13,8 +13,8 @@ export function SportTabs({ active, onChange }: SportTabsProps) {
         onClick={() => onChange("futbol")}
         className={`px-2 py-2 text-sm font-bold border-b-2 transition-all duration-200 cursor-pointer ${
           active === "futbol"
-            ? "border-[#FCBF49] text-gray-900"
-            : "border-[#E5A922]/30 text-gray-500 hover:border-[#E5A922] hover:text-gray-700"
+            ? "border-[#FCBF49] text-[#FCBF49]"
+            : "border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-500"
         }`}
       >
         Futbol
@@ -25,8 +25,8 @@ export function SportTabs({ active, onChange }: SportTabsProps) {
         onClick={() => onChange("nba")}
         className={`px-2 py-2 text-sm font-bold border-b-2 transition-all duration-200 cursor-pointer ${
           active === "nba"
-            ? "border-[#FCBF49] text-gray-900"
-            : "border-[#E5A922]/30 text-gray-500 hover:border-[#E5A922] hover:text-gray-700"
+            ? "border-[#FCBF49] text-[#FCBF49]"
+            : "border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-500"
         }`}
       >
         NBA

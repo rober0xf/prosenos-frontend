@@ -38,20 +38,20 @@ export function DateNavigator({
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg flex items-center justify-between px-4 py-2.5">
+    <div className="bg-green-950 border border-green-700/50 rounded-lg flex items-center justify-between px-4 py-2.5">
       <button
         onClick={onPrev}
-        className="text-gray-500 hover:text-gray-800 text-lg leading-none cursor-pointer px-1"
+        className="text-green-400 hover:text-green-200 text-lg leading-none cursor-pointer px-1"
         aria-label="Yesterday"
       >
         ‹
       </button>
 
-      <span className="text-sm font-semibold text-gray-900">{getLabel()}</span>
+      <span className="text-sm font-semibold text-green-100">{getLabel()}</span>
 
       <button
         onClick={onNext}
-        className="text-gray-500 hover:text-gray-800 text-lg leading-none cursor-pointer px-1"
+        className="text-green-400 hover:text-green-200 text-lg leading-none cursor-pointer px-1"
         aria-label="Tomorrow"
       >
         ›
