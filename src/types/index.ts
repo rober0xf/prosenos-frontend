@@ -1,10 +1,14 @@
 export type Sport = "futbol" | "nba";
 
-export type MatchStatus = "scheduled" | "live" | "finished" | "postponed";
+export type MatchStatus =
+  | "scheduled"
+  | "live"
+  | "finished"
+  | "postponed"
+  | "ET";
 
 export interface Team {
   name: string;
-  logo?: string;
 }
 
 export interface Match {
@@ -14,9 +18,20 @@ export interface Match {
   homeScore: number | null;
   awayScore: number | null;
   status: MatchStatus;
-  startTime: string;
   league: string;
   sport: Sport;
-  date: string; // "YYYY-MM-DD"
-  minute?: number;
+  minute: number;
+  kickoff: string;
+}
+
+export interface ApiMatch {
+  id: string;
+  league: string;
+  home_team: string;
+  away_team: string;
+  home_score: number | null;
+  away_score: number | null;
+  status: string;
+  minute: number;
+  kickoff: string;
 }
