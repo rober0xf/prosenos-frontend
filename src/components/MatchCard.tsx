@@ -1,36 +1,14 @@
-import type { Match, MatchStatus } from "../types";
+import type { Match } from "../types";
 
-function StatusBadge({
-  status,
-  minute,
-}: {
-  status: MatchStatus;
-  minute?: number;
-}) {
-  if (status === "live") {
-    return (
-      <span className="inline-flex items-center gap-1 text-xs font-bold text-red-400 bg-red-900/40 px-1.5 py-0.5 rounded">
-        <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-        {minute}&#39;
-      </span>
-    );
-  }
-  if (status === "finished") {
-    return (
-      <span className="text-xs font-bold text-gray-400 bg-gray-800 px-1.5 py-0.5 rounded">
-        Final
-      </span>
-    );
-  }
-  return null;
-}
+import { cleanLogoPath } from "../utils/cleanLogoName";
+import { StatusBadge } from "./StatusBadge";
 
 interface MatchCardProps {
   match: Match;
 }
 
-export function MatchCard({ match }: MatchCardProps) {
-  const { homeTeam, awayTeam, homeScore, awayScore, status, startTime } = match;
+export const MatchCard = ({ match }: MatchCardProps) => {
+  const { homeTeam, awayTeam, homeScore, awayScore, status, kickoff } = match;
   const isLive = status === "live";
   const isFinished = status === "finished";
   const showScore = homeScore !== null && awayScore !== null;
@@ -45,7 +23,7 @@ export function MatchCard({ match }: MatchCardProps) {
       <div className="flex flex-col items-center justify-center min-w-12.5 text-center">
         {status === "scheduled" ? (
           <span className="text-md font-semibold text-gray-400 tabular-nums">
-            {startTime}
+            {kickoff ?? "—"}
           </span>
         ) : (
           <StatusBadge status={status} minute={match.minute} />
@@ -54,7 +32,13 @@ export function MatchCard({ match }: MatchCardProps) {
 
       {/* middle column: team and player name */}
       <div className="flex flex-col gap-y-2">
-        <div className="flex flex-col">
+        <div className="flex items-center gap-y-2">
+          <img
+            src={cleanLogoPath(homeTeam.name)}
+            alt=""
+            className="w-5 h-5 object-contain shrink-0"
+            onError={(e) => (e.currentTarget.style.display = "none")}
+          />
           <span
             className={`text-md ${isLive || isFinished ? "font-semibold text-gray-100" : "text-gray-400"}`}
           >
@@ -62,7 +46,13 @@ export function MatchCard({ match }: MatchCardProps) {
           </span>
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex items-center gap-2.5">
+          <img
+            src={cleanLogoPath(awayTeam.name)}
+            alt=""
+            className="w-5 h-5 object-contain shrink-0"
+            onError={(e) => (e.currentTarget.style.display = "none")}
+          />
           <span
             className={`text-md ${isLive || isFinished ? "font-semibold text-gray-100" : "text-gray-400"}`}
           >
@@ -95,4 +85,4 @@ export function MatchCard({ match }: MatchCardProps) {
       </div>
     </div>
   );
-}
+};
