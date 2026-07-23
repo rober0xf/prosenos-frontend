@@ -1,46 +1,42 @@
 import { useState, useMemo } from "react";
-import type { Sport } from "./types";
-import { matches } from "./data/dummy";
+import type { Match, Sport } from "./types";
 import { SportTabs } from "./components/SportTabs";
 import { DateNavigator } from "./components/DateNavigator";
 import { LeagueSection } from "./components/LeagueSection";
-
-function formatDate(d: Date) {
-  const y = d.getFullYear();
-  const m = (d.getMonth() + 1).toString().padStart(2, "0");
-  const day = d.getDate().toString().padStart(2, "0");
-  return `${y}-${m}-${day}`;
-}
+import { useMatches } from "./hooks/useMatches";
 
 function App() {
   const [sport, setSport] = useState<Sport>("futbol");
-  const [currentDate, setCurrentDate] = useState(() => new Date());
-
-  const dateStr = formatDate(currentDate);
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const { matches, loading, error } = useMatches(currentDate);
 
   const grouped = useMemo(() => {
-    const filtered = matches.filter(
-      (m) => m.sport === sport && m.date === dateStr,
-    );
-    const map = new Map<string, typeof filtered>();
-    for (const m of filtered) {
-      const list = map.get(m.league) ?? [];
-      list.push(m);
-      map.set(m.league, list);
+    const filtered = matches.filter((m) => m.sport === sport);
+    const map = new Map<string, Match[]>();
+
+    for (const match of filtered) {
+      const list = map.get(match.league) ?? [];
+      list.push(match);
+      map.set(match.league, list);
     }
+
     return Array.from(map.entries());
-  }, [sport, dateStr]);
+  }, [matches, sport]);
 
   const prevDay = () => {
-    const d = new Date(currentDate);
-    d.setDate(d.getDate() - 1);
-    setCurrentDate(d);
+    setCurrentDate((current) => {
+      const next = new Date(current);
+      next.setDate(next.getDate() - 1);
+      return next;
+    });
   };
 
   const nextDay = () => {
-    const d = new Date(currentDate);
-    d.setDate(d.getDate() + 1);
-    setCurrentDate(d);
+    setCurrentDate((current) => {
+      const next = new Date(current);
+      next.setDate(next.getDate() + 1);
+      return next;
+    });
   };
 
   return (
@@ -58,9 +54,15 @@ function App() {
         <div className="flex flex-col gap-3">
           <DateNavigator date={currentDate} onPrev={prevDay} onNext={nextDay} />
 
-          {grouped.length === 0 ? (
+          {loading ? (
             <p className="text-center font-medium text-gray-200 py-8">
-              There are no matches for this date
+              Loading matches...
+            </p>
+          ) : error ? (
+            <p className="text-center font-medium text-xl text-red-400 py-8">{error}</p>
+          ) : grouped.length === 0 ? (
+            <p className="text-center font-medium text-gray-200 py-8">
+              There is not matches for this date
             </p>
           ) : (
             grouped.map(([league, leagueMatches]) => (
