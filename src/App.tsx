@@ -40,18 +40,21 @@ function App() {
   };
 
   return (
-    <div className="min-h-dvh bg-green-800">
-      <header className="border-b border-green-950 bg-green-900">
-        <div className="max-w-xl mx-auto px-4 py-3">
-          <h1 className="text-2xl font-semibold text-gray-100 text-center mb-3">
+    <div
+      className="min-h-dvh bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/public/bg.webp')" }}
+    >
+      <header className="border-b border-white/10 bg-black/50 backdrop-blur-md">
+        <div className="max-w-xl mx-auto px-4 py-4">
+          <h1 className="text-3xl font-semibold text-gray-100 text-center mb-3 tracking-wide drop-shadow-md">
             Prosenos
           </h1>
           <SportTabs active={sport} onChange={setSport} />
         </div>
       </header>
 
-      <main className="max-w-xl mx-auto px-4 py-4">
-        <div className="flex flex-col gap-3">
+      <main className="max-w-xl mx-auto px-4 py-6">
+        <div className="flex flex-col gap-3 p-5">
           <DateNavigator date={currentDate} onPrev={prevDay} onNext={nextDay} />
 
           {loading ? (
@@ -59,7 +62,9 @@ function App() {
               Loading matches...
             </p>
           ) : error ? (
-            <p className="text-center font-medium text-xl text-red-400 py-8">{error}</p>
+            <p className="text-center font-medium text-xl text-red-400 py-8">
+              {error}
+            </p>
           ) : grouped.length === 0 ? (
             <p className="text-center font-medium text-gray-200 py-8">
               There is not matches for this date
