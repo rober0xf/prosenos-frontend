@@ -4,10 +4,11 @@ import { SportTabs } from "./components/SportTabs";
 import { DateNavigator } from "./components/DateNavigator";
 import { LeagueSection } from "./components/LeagueSection";
 import { useMatches } from "./hooks/useMatches";
+import { useUrlDate } from "./hooks/useUrlDate";
 
 function App() {
   const [sport, setSport] = useState<Sport>("futbol");
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const { date: currentDate, setDate: setCurrentDate } = useUrlDate();
   const { matches, loading, error } = useMatches(currentDate);
 
   const grouped = useMemo(() => {
@@ -24,7 +25,7 @@ function App() {
   }, [matches, sport]);
 
   const prevDay = () => {
-    setCurrentDate((current) => {
+    setCurrentDate((current: Date) => {
       const next = new Date(current);
       next.setDate(next.getDate() - 1);
       return next;
@@ -67,7 +68,7 @@ function App() {
             </p>
           ) : grouped.length === 0 ? (
             <p className="text-center font-medium text-gray-200 py-8">
-              There is not matches for this date
+              There are not matches for this date
             </p>
           ) : (
             grouped.map(([league, leagueMatches]) => (
