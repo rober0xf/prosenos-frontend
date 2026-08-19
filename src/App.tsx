@@ -46,7 +46,7 @@ function App() {
       style={{ backgroundImage: "url('/public/bg.webp')" }}
     >
       <header className="border-b border-white/10 bg-black/50 backdrop-blur-md">
-        <div className="max-w-xl mx-auto px-4 py-4">
+        <div className="max-w-3xl mx-auto px-4 py-4">
           <h1 className="text-3xl font-semibold text-gray-100 text-center mb-3 tracking-wide drop-shadow-md">
             Prosenos
           </h1>
@@ -54,7 +54,7 @@ function App() {
         </div>
       </header>
 
-      <main className="max-w-xl mx-auto px-4 py-6">
+      <main className="max-w-3xl mx-auto px-4 py-6">
         <div className="flex flex-col gap-3 p-5">
           <DateNavigator date={currentDate} onPrev={prevDay} onNext={nextDay} />
 

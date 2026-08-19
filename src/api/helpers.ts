@@ -7,21 +7,30 @@ export function mapMatch(raw: ApiMatch): Match {
     awayTeam: { name: raw.away_team },
     homeScore: raw.home_score,
     awayScore: raw.away_score,
-    status: mapStatus(raw.status),
+    homePenalties: raw.home_penalties,
+    awayPenalties: raw.away_penalties,
+    aggHomeScore: raw.agg_home_score,
+    aggAwayScore: raw.agg_away_score,
+    status: mapStatus(raw.status, raw.qualifies),
     league: raw.league,
     sport: "futbol",
     minute: raw.minute ?? -1,
     kickoff: formatKickoff(raw.kickoff),
+    homeScorers: raw.home_scorers,
+    awayScorers: raw.away_scorers,
+    qualifies: raw.qualifies,
   };
 }
 
-function mapStatus(status: string): MatchStatus {
+function mapStatus(status: string, qualifies: number | null): MatchStatus {
   const s = status.toLowerCase();
   if (s === "primer tiempo" || s === "segundo tiempo") return "live";
   if (s === "entretiempo") return "ET";
   if (s === "finalizado" || s === "final") return "finished";
+  if (s === "por penales") {
+    return qualifies !== null && qualifies > 0 ? "finished" : "live";
+  }
   if (s === "postponed" || s === "ppd") return "postponed";
-
   return "scheduled";
 }
 
