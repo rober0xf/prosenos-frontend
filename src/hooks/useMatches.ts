@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import type { Match } from "../types";
 import { fetchMatches } from "../api/matches";
 
-export function useMatches(date: Date) {
-  const [matches, setMatches] = useState<Match[]>([]);
+export function useMatches(
+  date: Date,
+  initialMatches: Match[] = [],
+  initialError: string | null = null,
+) {
+  const [matches, setMatches] = useState<Match[]>(initialMatches);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(initialError);
 
   useEffect(() => {
     let cancelled = false;
