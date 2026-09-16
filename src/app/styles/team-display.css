@@ -1,0 +1,81 @@
+.team-display {
+    display: flex;
+    flex: 1 1 0%;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    gap: 0.125rem;
+}
+
+.team-display-left {
+    align-items: flex-start;
+}
+
+.team-display-right {
+    align-items: flex-end;
+}
+
+.team-display-identity {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    gap: 0.625rem;
+}
+
+.team-display-identity-left {
+    justify-content: flex-start;
+}
+
+.team-display-identity-right {
+    justify-content: flex-end;
+}
+
+.team-display-logo {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.team-display-logo-hidden {
+    display: none;
+}
+
+.team-display-name {
+    max-width: 8rem;
+    overflow: hidden;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.team-display-name-right,
+.team-display-scorer-right {
+    text-align: right;
+}
+
+.team-display-scorers {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.team-display-scorers-left {
+    align-items: flex-start;
+}
+
+.team-display-scorers-right {
+    align-items: flex-end;
+}
+
+.team-display-scorer {
+    color: rgb(156 163 175);
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
