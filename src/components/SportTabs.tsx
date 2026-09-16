@@ -1,4 +1,5 @@
-import type { Sport } from "../types";
+import { Sport } from "@/types";
+import "@/app/styles/sport-tabs.css";
 
 interface SportTabsProps {
   active: Sport;
@@ -7,27 +8,25 @@ interface SportTabsProps {
 
 export function SportTabs({ active, onChange }: SportTabsProps) {
   return (
-    <div className="flex gap-6 w-fit mx-auto px-2">
+    <div className="sport-tabs" role="tablist" aria-label="sport">
       {/* Futbol tab */}
       <button
+        type="button"
+        role="tab"
+        aria-selected={active === "futbol"}
         onClick={() => onChange("futbol")}
-        className={`px-2 py-2 text-sm font-bold border-b-2 transition-all duration-200 cursor-pointer ${
-          active === "futbol"
-            ? "border-[#FCBF49] text-[#FCBF49]"
-            : "border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-500"
-        }`}
+        className={`sport-tab ${active === "futbol" ? "active" : ""}`}
       >
         Futbol
       </button>
 
       {/* NBA tab */}
       <button
+        type="button"
+        role="tab"
+        aria-selected={active === "nba"}
         onClick={() => onChange("nba")}
-        className={`px-2 py-2 text-sm font-bold border-b-2 transition-all duration-200 cursor-pointer ${
-          active === "nba"
-            ? "border-[#FCBF49] text-[#FCBF49]"
-            : "border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-500"
-        }`}
+        className={`sport-tab ${active === "nba" ? "active" : ""}`}
       >
         NBA
       </button>

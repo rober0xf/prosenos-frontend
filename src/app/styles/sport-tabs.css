@@ -1,0 +1,31 @@
+.sport-tabs {
+    display: flex;
+    gap: 1.5rem;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+}
+
+.sport-tab {
+    padding: 0.5rem;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #9ca3af;
+    cursor: pointer;
+    transition:
+        color 200ms,
+        border-color 200ms;
+}
+
+.sport-tab:hover {
+    color: #e5e7eb;
+    border-bottom-color: #6b7280;
+}
+
+.sport-tab.active {
+    color: #fcbf49;
+    border-bottom-color: #fcbf49;
+}

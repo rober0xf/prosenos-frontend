@@ -1,0 +1,43 @@
+.league {
+    overflow: hidden;
+    border: 2px solid rgb(15 23 42 / 0.3);
+    border-radius: 0.5rem;
+    backdrop-filter: blur(4px);
+}
+
+.league-header {
+    padding: 0.5rem;
+    background-color: rgb(254 240 138 / 0.2);
+    backdrop-filter: blur(16px);
+}
+
+.league-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.league-logo {
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    object-fit: contain;
+}
+
+.league-name {
+    margin: 0;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.league-matches {
+    background-color: rgb(23 37 84 / 0.6);
+    backdrop-filter: blur(16px);
+}
+
+.league-matches > * + * {
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+}
