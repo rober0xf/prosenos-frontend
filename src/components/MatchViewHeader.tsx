@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Sport } from "@/types";
 import { SportTabs } from "./SportTabs";
 import "@/app/styles/match-view-header.css";
@@ -14,7 +15,9 @@ export const MatchViewHeader = ({
   return (
     <header className="match-header">
       <div className="match-header-content">
-        <h1 className="match-title">Prosenos</h1>
+        <Link href="/" className="match-title-link">
+          <h1 className="match-title">Prosenos</h1>
+        </Link>
         <SportTabs active={sport} onChange={onSportChange} />
       </div>
     </header>
