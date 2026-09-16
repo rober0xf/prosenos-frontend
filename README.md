@@ -7,7 +7,7 @@ Next.js 16 (App Router) + TypeScript sports scoreboard. Displays football ("futb
 - **Runtime / Package Manager:** Bun
 - **Framework:** Next.js 16 (App Router, Turbopack)
 - **Language:** TypeScript (strict)
-- **Styling:** Tailwind CSS v4 (`@tailwindcss/postcss`)
+- **Styling:** Plain CSS (component-scoped stylesheets in `src/app/styles/`)
 - **State:** React `useState`
 
 ## Getting Started
@@ -32,5 +32,5 @@ The app expects a backend API on `http://localhost:8000`. In the browser, `/api/
 ## Architecture Notes
 
 - `src/app/page.tsx` is the server component: it reads `?date=DD-MM-YYYY`, fetches initial matches from the backend, and passes them to the client `MatchView`.
-- `src/components/MatchView.tsx` manages interactivity (sport tabs, date navigation via `useSearchParams`/`useRouter`, re-fetches via `useMatches`).
+- `src/components/MatchView.tsx` manages interactivity (sport tabs, date navigation via `useSearchParams`/`useRouter`); rendering is server-driven via the `initialMatches` props.
 - Public assets (`bg.webp`, logos, favicon) are served from `public/` at the root path.
