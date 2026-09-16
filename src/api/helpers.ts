@@ -55,3 +55,18 @@ export function formatDateParam(d: Date): string {
 export function formatKickoff(d: string): string {
   return d.split(" ")[1];
 }
+
+// page.tsx
+export function parseDate(dateStr: string | undefined): Date {
+  if (dateStr) {
+    const [day, month, year] = dateStr.split("-").map(Number);
+    if (day && month && year) {
+      const parsed = new Date(year, month - 1, day);
+      if (formatDateParam(parsed) === dateStr) {
+        return parsed;
+      }
+    }
+  }
+
+  return new Date();
+}
