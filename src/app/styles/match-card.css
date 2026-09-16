@@ -1,0 +1,22 @@
+.match-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    gap: 0 1rem;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.match-card-live {
+    background-color: rgba(127, 29, 29, 0.15);
+    border-left: 3px solid #ef4444;
+}
+
+.match-card-teams {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}

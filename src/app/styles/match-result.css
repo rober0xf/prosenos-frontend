@@ -1,0 +1,14 @@
+.match-result-message {
+    padding: 2rem 0;
+    text-align: center;
+    font-weight: 500;
+    color: #e5e7eb;
+}
+
+.match-result-error {
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #f87171;
+}

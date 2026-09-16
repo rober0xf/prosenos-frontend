@@ -1,0 +1,22 @@
+.match-header {
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
+    background: rgb(0 0 0 / 50%);
+    backdrop-filter: blur(12px);
+}
+
+.match-header-content {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.match-title {
+    margin: 0 0 0.75rem;
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 600;
+    line-height: 2.25rem;
+    letter-spacing: 0.025em;
+    color: #f3f4f6;
+    filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07));
+}

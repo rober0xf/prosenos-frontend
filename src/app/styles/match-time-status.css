@@ -1,0 +1,15 @@
+.match-time-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 3.125rem;
+    text-align: center;
+}
+
+.match-time-status-kickoff {
+    color: rgb(156 163 175);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
