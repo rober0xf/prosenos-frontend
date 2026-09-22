@@ -1,5 +1,5 @@
-import type { ApiMatch, Match } from "../types";
-import { isToday, formatDateParam, mapMatch } from "./helpers";
+import { ApiMatch, Match } from "@/types";
+import { formatDateParam, isToday, mapMatch } from "./helpers";
 
 export async function fetchMatches(
   date: Date,

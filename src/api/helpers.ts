@@ -1,4 +1,4 @@
-import type { ApiMatch, Match, MatchStatus } from "../types";
+import { ApiMatch, Match, MatchStatus } from "@/types";
 
 export function mapMatch(raw: ApiMatch): Match {
   return {
@@ -53,7 +53,7 @@ export function formatDateParam(d: Date): string {
 }
 
 export function formatKickoff(d: string): string {
-  return d.split(" ")[1];
+  return d.split("T")[1].slice(0, 5);
 }
 
 // page.tsx
