@@ -25,4 +25,4 @@ out
 *.sln
 *.sw?
 
-/public/logos
+# /public/logos
